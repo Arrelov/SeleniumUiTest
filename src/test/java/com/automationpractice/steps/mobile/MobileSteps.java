@@ -88,16 +88,16 @@ public class MobileSteps {
                 .click();
     }
 
-    @Then("I see one item in cart")
-    public void i_see_one_item_in_cart() {
+    @Then("I see {int} item\\(s) in cart")
+    public void i_see_one_item_in_cart(int number) {
         Main page = new Main();
-        // Перемещаемя до кнопки корзины
+// Перемещаемся до кнопки корзины
         actions()
                 .moveToElement(page.getCartButton())
                 .perform();
 // Проверяем, что в корзине один элемент
         page.getCartItemsQuantity()
-                .shouldHave(Condition.text("1"));
+                .shouldHave(Condition.text(String.valueOf(number)));
         String itemsText = page.getCartItemsQuantity()
                 .text();
         System.out.println("itemsText = " + itemsText);
@@ -105,23 +105,12 @@ public class MobileSteps {
         System.out.println("currentUrl= " + currentUrl);
     }
 
-    @Then("I see two items in cart")
-    public void i_see_two_items_in_cart() {
+    @When("I click button to remove dress from cart")
+    public void i_click_button_to_remove_dress_from_cart() {
         Main page = new Main();
-// Перемещаемя до кнопки корзины
-        actions()
-                .moveToElement(page.getCartButton())
-                .perform();
-// Проверяем, что в корзине один элемент
-        page.getCartItemsQuantity()
-                .shouldHave(Condition.text("2"));
-        String itemsText = page.getCartItemsQuantity()
-                .text();
-        System.out.println("itemsText = " + itemsText);
-        String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        System.out.println("currentUrl= " + currentUrl);
-//        sleep(3000);    // посмотреть, что всё работает
-        Selenide.closeWebDriver();
+        page.getCartDeleteElement()
+                .shouldBe(Condition.enabled, Condition.visible)
+                .click();
     }
 
     @AfterAll

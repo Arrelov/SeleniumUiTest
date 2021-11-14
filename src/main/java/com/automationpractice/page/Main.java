@@ -47,8 +47,6 @@ public class Main {
     private final SelenideElement prntdSumDrToCart = $(byText("Proceed to checkout"));
 
 
-
-
 // поиск товара по тексту
     private final SelenideElement shopItemsByText = $(byText("Faded Short Sleeve T-shirts"));
 
@@ -74,8 +72,6 @@ public class Main {
     private final ElementsCollection addToCartButtons = $$("a[title='Add to cart']");
 
 
-
-
 //  Кнопка Корзина на главной странице
 //  счетчик товаров в корзине
     private final SelenideElement cartItemsQuantity = $(By
@@ -86,5 +82,7 @@ public class Main {
 //  элементы товаров, добавленных в корзину
     private final ElementsCollection cartItems = $$(By
             .className("cart-images"));
-
+// крестик удаления добавленного элемента
+    private final SelenideElement cartDeleteElement = $(By
+            .className("ajax_cart_block_remove_link"));
 }

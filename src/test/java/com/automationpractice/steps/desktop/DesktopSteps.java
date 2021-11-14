@@ -5,6 +5,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -82,16 +83,16 @@ public class DesktopSteps {
                 .click();
     }
 
-    @Then("I see one item in cart")
-    public void i_see_one_item_in_cart() {
+    @Then("I see {int} item\\(s) in cart")
+    public void i_see_one_item_in_cart(int number) {
         Main page = new Main();
-// Перемащаемся до кнопки корзины
+// Перемещаемся до кнопки корзины
         actions()
                 .moveToElement(page.getCartButton())
                 .perform();
 // Проверяем, что в корзине один элемент
         page.getCartItemsQuantity()
-                .shouldHave(Condition.text("1"));
+                .shouldHave(Condition.text(String.valueOf(number)));
         String itemsText = page.getCartItemsQuantity()
                 .text();
         System.out.println("itemsText = " + itemsText);
@@ -99,25 +100,14 @@ public class DesktopSteps {
         System.out.println("currentUrl= " + currentUrl);
     }
 
-    @Then("I see two items in cart")
-    public void i_see_two_items_in_cart() {
+
+    @When("I click button to remove dress from cart")
+    public void i_click_button_to_remove_dress_from_cart() {
         Main page = new Main();
-// Перемещаемя до кнопки корзины
-        actions()
-                .moveToElement(page.getCartButton())
-                .perform();
-// Проверяем, что в корзине один элемент
-        page.getCartItemsQuantity()
-                .shouldHave(Condition.text("2"));
-        String itemsText = page.getCartItemsQuantity()
-                .text();
-        System.out.println("itemsText = " + itemsText);
-        String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        System.out.println("currentUrl= " + currentUrl);
-        Selenide.closeWebDriver();
+        page.getCartDeleteElement()
+                .shouldBe(Condition.enabled, Condition.visible)
+                .click();
     }
-
-
 
     @AfterAll
     public static void closeAll() {

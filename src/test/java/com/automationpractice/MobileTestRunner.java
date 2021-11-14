@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @CucumberOptions(
-        features = "src/test/java/com/automationpractice/feature/MobileCartTest.feature",
+        features = "src/test/java/com/automationpractice/feature/mobile",
         glue = "com/automationpractice/steps/mobile",
         plugin = "pretty"
 )
