@@ -6,6 +6,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
@@ -107,13 +108,18 @@ public class MobileSteps {
 
     @When("I click button to remove dress from cart")
     public void i_click_button_to_remove_dress_from_cart() {
+// Перемещаемся до кнопки корзины
         Main page = new Main();
+        actions()
+                .moveToElement(page.getCartButton())
+                .perform();
+// Удаляем содержимое из корзины
         page.getCartDeleteElement()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
     }
 
-    @AfterAll
+    @After
     public static void closeAll() {
         Selenide.closeWebDriver();
     }

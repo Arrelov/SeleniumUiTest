@@ -2,7 +2,6 @@ package com.automationpractice.page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.selector.ByText;
 import lombok.Data;
 import lombok.Getter;
 import org.openqa.selenium.By;

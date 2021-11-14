@@ -14,7 +14,7 @@ public class AddToCartTwiceAndRemove {
 
     @Before
     public void setBrowserConfig() {
-        Configuration.browser = "chrome";
+        Configuration.browser = "firefox";
         Configuration.startMaximized = true;
     }
 

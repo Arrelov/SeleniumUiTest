@@ -44,8 +44,6 @@ public class AddBySizeTest {
                 .click();
 //switch to iFrame
         switchTo().frame(page.getPrntdSumDrToFancy());
-//        switchTo().frame(element(By.className("fancybox-iframe")));
-
 //fill quantity field
         page.getPrntdSumDrQiantity()
                 .setValue("3");
@@ -56,28 +54,13 @@ public class AddBySizeTest {
         page.getPrntdSumDrAddToCartFancybox()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
-// Остаемся на сайте
-
-
-//// листаем до
-//        page.getPrntdSumDrContinue()
-//                .scrollTo();
-//// наводим курсор
-//        actions()
-//                .moveToElement(page.getPrntdSumDrContinue())
-//                .perform();
-//        switchTo().frame(element(By.className("layer_cart")));
-//        switchTo().frame(element(By.className("clearfix")));
-//        switchTo().frame(element(By.className("layer_cart_overlay")));
-//        $(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span")).click();
-//        $(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[5]")).click();
-        $(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span")).click();
+// Остаемся на сайте. Нет, не получается остаться. Всё, что я смог сделать тут, это
         actions()
-                .moveToElement(page.getPrntdSumDrContinue3())
+                .moveToElement($$x("div.clearfix").get(3))
                 .perform();
-
-        page.getPrntdSumDrContinue3()
-                .click();
+        switchTo().frame($$x("div.clearfix").get(3));
+//        $(By.className("clearfix")).click(); // переход на страницу товара
+// ну ладно. корзина на всех страницах выглядит одинаково, так что
 
 // Листаем до корзины
         actions()

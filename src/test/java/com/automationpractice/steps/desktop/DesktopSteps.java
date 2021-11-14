@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.BeforeAll;
@@ -100,17 +101,22 @@ public class DesktopSteps {
         System.out.println("currentUrl= " + currentUrl);
     }
 
-
     @When("I click button to remove dress from cart")
     public void i_click_button_to_remove_dress_from_cart() {
         Main page = new Main();
+// Перемещаемся до кнопки корзины
+        actions()
+                .moveToElement(page.getCartButton())
+                .perform();
+// Удаляем содержимое корзины
         page.getCartDeleteElement()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
     }
 
-    @AfterAll
+    @After
     public static void closeAll() {
+
         Selenide.closeWebDriver();
     }
 }
