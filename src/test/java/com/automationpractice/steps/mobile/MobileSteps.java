@@ -24,13 +24,13 @@ public class MobileSteps {
     }
 
     @Given("Set browser {string}")
-    public void setBrowsersize(String browser){
+    public void setBrowser(String browser){
         Configuration.browser = browser;
         System.out.println("browser = " + browser);
     }
 
-    @Given("Set browsersize {int} x {int}")
-    public void setBrowsersize(int width, int length ){
+    @Given("Set browser window size {int} x {int}")
+    public void setBrowserSize(int width, int length ){
         Configuration.browserSize = width + "x" + length;
         Configuration.browserPosition= "1x1";
         System.out.println("browserSize = " + width + "x" + length);
@@ -47,9 +47,7 @@ public class MobileSteps {
         Main page = new Main();
         page.getCartButton()
                 .shouldBe(Condition.enabled, Condition.visible)
-                .hover()
                 .click();
-//        sleep(4000); // посмотреть на страничку хоть
     }
 
     @Then("I see cart page")
@@ -105,13 +103,12 @@ public class MobileSteps {
         System.out.println("itemsText = " + itemsText);
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         System.out.println("currentUrl= " + currentUrl);
-//        sleep(3000);    // посмотреть, что всё работает
     }
 
     @Then("I see two items in cart")
     public void i_see_two_items_in_cart() {
         Main page = new Main();
-        // Перемещаемя до кнопки корзины
+// Перемещаемя до кнопки корзины
         actions()
                 .moveToElement(page.getCartButton())
                 .perform();
@@ -125,42 +122,6 @@ public class MobileSteps {
         System.out.println("currentUrl= " + currentUrl);
 //        sleep(3000);    // посмотреть, что всё работает
         Selenide.closeWebDriver();
-    }
-
-    public void putDressToCart() {
-        Main page = new Main();
-        open(page.getPageURL());
-// Проверяем, что корзина пуста
-        page.getCartEmpty()
-                .shouldBe(Condition.enabled);
-// Листаем страницу до платья
-        page.getPrintedSummerDress()
-                .scrollTo();
-// Наводим курсор на платье
-        actions()
-                .moveToElement(page.getPrintedSummerDress())
-                .perform();
-// Нажимаем кнопку добавления в корзину этого платья
-        page.getPrntdSumDrAddToCartSpawnButton()
-                .shouldBe(Condition.enabled, Condition.visible)
-                .click();
-// Нажимаем кнопку чтобы остаться на странице
-        page.getСontinueShoppingButton()
-                .shouldBe(Condition.enabled, Condition.visible)
-                .click();
-// Перемещаемя до кнопки корзины
-        actions()
-                .moveToElement(page.getCartButton())
-                .perform();
-// Проверяем, что в корзине один элемент
-        page.getCartItemsQuantity()
-                .shouldHave(Condition.text("1"));
-        String itemsText = page.getCartItemsQuantity()
-                .text();
-        System.out.println("itemsText = " + itemsText);
-        String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        System.out.println("currentUrl= " + currentUrl);
-        sleep(3000);
     }
 
     @AfterAll

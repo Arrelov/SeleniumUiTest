@@ -11,8 +11,6 @@ import com.automationpractice.page.Main;
 import com.automationpractice.page.Dresses;
 import org.openqa.selenium.WebDriver;
 
-import java.awt.*;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;

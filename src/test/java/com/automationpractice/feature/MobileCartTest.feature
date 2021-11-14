@@ -2,7 +2,7 @@
 Feature: Mobile devices cart test
 
   Background:
-    Given Set browsersize 400 x 900
+    Given Set browser window size 400 x 900
     Given Set browser "opera"
 
 
