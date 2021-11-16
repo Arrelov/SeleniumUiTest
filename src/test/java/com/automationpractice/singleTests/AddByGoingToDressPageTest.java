@@ -42,20 +42,21 @@ public class AddByGoingToDressPageTest {
                 .filterBy((Condition.attribute(
                         "title",
                         "Printed Summer Dress"))).get(0);
-// листаем до элемента
-        dressPage.getPrintedSummerDressMore()
-                .scrollTo()
+// наводим курсор на элемент
+        actions()
+                .moveToElement(myItem)
+                .perform();
+// кликаем найденный элемент
+        myItem
+                .shouldBe(Condition.enabled, Condition.visible)
                 .click();
 
-// наводим курсор на элемент
-//        actions()
-//                .moveToElement(myItem)
-//                .perform();
-// кликаем найденный элемент
-//        myItem
-//                .shouldBe(Condition.enabled, Condition.visible)
-//                .click();
-//        sleep(4000);
+//// Вводим количество
+//        $x("//*[@id=\"quantity_wanted\"]")
+//                .setValue("3");
+
+
+        sleep(2000);
 //        page.getСontinueShoppingButton()
 //                .shouldBe(Condition.enabled, Condition.visible)
 //                .click();

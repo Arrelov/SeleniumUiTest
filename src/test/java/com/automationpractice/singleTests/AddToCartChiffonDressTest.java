@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class AddToCartTest {
+public class AddToCartChiffonDressTest {
 
     @Before
     public void setBrowserConfig() {
@@ -27,14 +27,14 @@ public class AddToCartTest {
         page.getCartEmpty()
                 .shouldBe(Condition.enabled);
 // Идем к летнему платью
-        page.getPrintedSummerDress()
+        page.getPrintedChiffonDress()
                 .scrollTo();
 // Наводим курсор
         actions()
-                .moveToElement(page.getPrintedSummerDress())
+                .moveToElement(page.getPrintedChiffonDress())
                 .perform();
 // Нажатием кнопки добавляем в корзину
-        page.getPrntdSumDrAddToCartSpawnButton()
+        page.getPrntdChiffDrAddToCartButton()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
 // Остаемся на сайте

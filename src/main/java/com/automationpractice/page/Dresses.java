@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class Dresses {
     @Getter
     private final String pageURL = "http://automationpractice.com/index.php?id_category=8&controller=category";
-// Выбирает все элементы товаров на странице
+// Выбирает все элементы товаров на странице. Всего 14, первые 7 товары
     private final ElementsCollection shopItems = $$("div.product-container");
 // выбирает все кнопки Add to Cart на странице. На главной их 7 реальные из 14 видимые
     private final ElementsCollection addToCartButtons = $$("a[title='Add to cart']");

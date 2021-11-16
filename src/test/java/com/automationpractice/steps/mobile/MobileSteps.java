@@ -7,7 +7,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -69,8 +68,8 @@ public class MobileSteps {
                 .shouldBe(Condition.enabled);
     }
 
-    @When("I click add to cart button for the dress")
-    public void i_click_add_to_cart_button_for_the_dress() {
+    @When("I click add to cart button for the Printed Summer Dress")
+    public void i_click_add_to_cart_button_for_the_summer_dress() {
         Main page = new Main();
 // Листаем страницу до платья
         page.getPrintedSummerDress()
@@ -81,6 +80,26 @@ public class MobileSteps {
                 .perform();
 // Нажимаем кнопку добавления в корзину этого платья
         page.getPrntdSumDrAddToCartSpawnButton()
+                .shouldBe(Condition.enabled, Condition.visible)
+                .click();
+// Нажимаем кнопку чтобы остаться на странице
+        page.getСontinueShoppingButton()
+                .shouldBe(Condition.enabled, Condition.visible)
+                .click();
+    }
+
+    @When("I click add to cart button for the Printed Chiffon Dress")
+    public void i_click_add_to_cart_button_for_the_chiffon_dress() {
+        Main page = new Main();
+// Листаем страницу до платья
+        page.getPrintedChiffonDress()
+                .scrollTo();
+// Наводим курсор на платье
+        actions()
+                .moveToElement(page.getPrintedChiffonDress())
+                .perform();
+// Нажимаем кнопку добавления в корзину этого платья
+        page.getPrntdChiffDrAddToCartButton()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
 // Нажимаем кнопку чтобы остаться на странице

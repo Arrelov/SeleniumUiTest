@@ -7,8 +7,7 @@ import lombok.Getter;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 @Data
 public class Main {
@@ -17,34 +16,41 @@ public class Main {
 
 // Кнопки для перехода на другие страницы
 // Кнопка перехода на страницу Cart
-    private final SelenideElement cartButton = $(By
-            .xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
+    private final SelenideElement cartButton = $x(
+            "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a");
 //  Кнопка перехода на вкладку Dresses
-    private final SelenideElement dressesButton = $(By
-            .xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a"));
+    private final SelenideElement dressesButton = $x(
+            "//*[@id=\"block_top_menu\"]/ul/li[2]/a");
 
 // Локаторы товаров
 // локаторы для первого в списке (светлого) платья с title Printed Summer Dress
-    private final SelenideElement printedSummerDress = $(By
-            .xpath("//*[@id=\"homefeatured\"]/li[5]/div/div[1]/div/a[1]/img"));
-    private final SelenideElement prntdSumDrAddToCartSpawnButton = $(By
-            .xpath("//*[@id=\"homefeatured\"]/li[5]/div/div[2]/div[2]/a[1]/span"));
-    private final SelenideElement prntdSumDrQuickView = $(By
-            .xpath("//*[@id=\"homefeatured\"]/li[5]/div/div[1]/div/div[1]/a"));
-    private final SelenideElement prntdSumDrQuickView2 = $(By
-            .xpath("(//a[@class='quick-view'])[5]"));
+    private final SelenideElement printedSummerDress = $x(
+            "//*[@id=\"homefeatured\"]/li[5]/div/div[1]/div/a[1]/img");
+    private final SelenideElement prntdSumDrAddToCartSpawnButton = $x(
+            "//*[@id=\"homefeatured\"]/li[5]/div/div[2]/div[2]/a[1]/span");
+    private final SelenideElement prntdSumDrQuickView = $x(
+            "//*[@id=\"homefeatured\"]/li[5]/div/div[1]/div/div[1]/a");
+    private final SelenideElement prntdSumDrQuickView2 = $x(
+            "(//a[@class='quick-view'])[5]");
 // fancybox-iframe возможно работает для всех товаров
     private final SelenideElement prntdSumDrToFancy = $(By.className("fancybox-iframe"));
     private final SelenideElement prntdSumDrQiantity = $(By.id("quantity_wanted"));
     private final SelenideElement prntdSumDrSize = $(By.id("group_1"));
     private final SelenideElement prntdSumDrAddToCartFancybox = $(By.id("add_to_cart"));
     private final SelenideElement prntdSumDrContinue = $(byText("Continue shopping"));
-    private final SelenideElement prntdSumDrContinue2 = $(By
-            .xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/span"));
-    private final SelenideElement prntdSumDrContinue3 = $(By
-            .xpath("//*[contains(text(),'Continue shopping')]"));
+    private final SelenideElement prntdSumDrContinue2 = $x(
+            "//*[@id=\"layer_cart\"]/div[1]/div[1]/span");
+    private final SelenideElement prntdSumDrContinue3 = $x(
+            "//*[contains(text(),'Continue shopping')]");
     private final SelenideElement prntdSumDrToCart = $(byText("Proceed to checkout"));
 
+// Локаторы для Printed Chiffon Dress
+    private final SelenideElement printedChiffonDress = $x(
+            "//*[@id=\"homefeatured\"]/li[7]/div/div[1]/div/a[1]/img");
+    private final SelenideElement prntdChiffDrAddToCartButton = $x(
+            "//*[@id=\"homefeatured\"]/li[7]/div/div[2]/div[2]/a[1]/span");
+    private final SelenideElement prntdChiffDrQuickView = $x(
+            "//*[@id=\"homefeatured\"]/li[7]/div/div[1]/div/div[1]/a");
 
 // поиск товара по тексту
     private final SelenideElement shopItemsByText = $(byText("Faded Short Sleeve T-shirts"));

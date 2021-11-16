@@ -54,13 +54,14 @@ public class AddBySizeTest {
         page.getPrntdSumDrAddToCartFancybox()
                 .shouldBe(Condition.enabled, Condition.visible)
                 .click();
-// Остаемся на сайте. Нет, не получается остаться. Всё, что я смог сделать тут, это
+// Остаемся на сайте. Нет, не получается остаться.
         actions()
                 .moveToElement($$x("div.clearfix").get(3))
                 .perform();
         switchTo().frame($$x("div.clearfix").get(3));
+// Всё, что я смог сделать тут, это кликнуть на
 //        $(By.className("clearfix")).click(); // переход на страницу товара
-// ну ладно. корзина на всех страницах выглядит одинаково, так что
+// Но почему-то при этом переходе корзина пуста! Не должно так быть, вручную же она не пуста
 
 // Листаем до корзины
         actions()
